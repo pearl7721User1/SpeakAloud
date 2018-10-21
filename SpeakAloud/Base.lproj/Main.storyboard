@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7oe-T4-F8G">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SpeakAloud" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="39"/>
+        </scene>
+        <!--Dictation View Controller-->
+        <scene sceneID="J9v-DO-1sK">
+            <objects>
+                <viewController id="7oe-T4-F8G" customClass="DictationViewController" customModule="SpeakAloud" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y49-cW-v0s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSd-fc-ip6">
+                                <rect key="frame" x="137" y="537" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.0" green="0.5" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1VP-wc-1kh"/>
+                                    <constraint firstAttribute="width" constant="100" id="9ql-mm-9Sf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="007-Er-2UR" appends="YES" id="a33-0o-0on"/>
+                                </connections>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yVA-x5-scB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yVA-x5-scB" firstAttribute="top" secondItem="Y49-cW-v0s" secondAttribute="top" id="17n-Ez-kow"/>
+                            <constraint firstItem="dlO-wU-VMN" firstAttribute="bottom" secondItem="yVA-x5-scB" secondAttribute="bottom" constant="140" id="LNy-zo-eRB"/>
+                            <constraint firstItem="dlO-wU-VMN" firstAttribute="bottom" secondItem="XSd-fc-ip6" secondAttribute="bottom" constant="30" id="SAl-eX-pyT"/>
+                            <constraint firstItem="dlO-wU-VMN" firstAttribute="trailing" secondItem="yVA-x5-scB" secondAttribute="trailing" id="ZqR-Ag-NGy"/>
+                            <constraint firstItem="XSd-fc-ip6" firstAttribute="centerX" secondItem="Y49-cW-v0s" secondAttribute="centerX" id="gSG-3I-SIY"/>
+                            <constraint firstItem="yVA-x5-scB" firstAttribute="leading" secondItem="dlO-wU-VMN" secondAttribute="leading" id="he9-X4-5mE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dlO-wU-VMN"/>
+                    </view>
+                    <connections>
+                        <outlet property="recorderSignal" destination="XSd-fc-ip6" id="mgR-VG-wnU"/>
+                        <outlet property="textView" destination="yVA-x5-scB" id="bqr-OC-nNK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3b1-6b-hZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="007-Er-2UR">
+                    <connections>
+                        <action selector="tapped:" destination="7oe-T4-F8G" id="2Zf-dt-8UC"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1314" y="33"/>
+        </scene>
+    </scenes>
+</document>
