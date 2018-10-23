@@ -8,6 +8,7 @@
 
 import UIKit
 import Speech
+import CoreData
 
 protocol TranscriptSaveDelegate {
     func save(transcript: String)
@@ -24,6 +25,9 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet var textView : UITextView!
     @IBOutlet var recorderSignal : UIView!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    private var managedContext: NSManagedObjectContext!
     
     var shouldStartAutomatically = false
     private var recorderAvailability = 0 {
@@ -63,6 +67,11 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
                 if audioEngine.isRunning {
                     
                     print("save")
+                    let isSaved = createTranscript(text: textView.text)
+                    if isSaved == true {
+                        self.saveButton.isEnabled = true
+                    }
+                    
                     shouldStartAutomatically = false
                 }
             }
@@ -88,11 +97,15 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        managedContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext
+            
+            
         NotificationCenter.default.addObserver(self, selector: #selector(shakeGestureHandler), name: NSNotification.Name(rawValue: "shaked"), object: nil)
         
         // Disable the record buttons until authorization has been granted.
         self.recorderAvailability = 0
+        
+        saveButton.isEnabled = false
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -209,11 +222,40 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
+    private func createTranscript(text: String) -> Bool {
+        
+        let transcript = Transcript(context: self.managedContext)
+        transcript.timeStamp = Date() as NSDate
+        transcript.text = text
+        
+        do {
+            try self.managedContext.save()
+        } catch {
+            
+            print("couldn't save the transcript")
+            return false
+        }
+        
+        return true
+    }
+    
     @IBAction func testCloudKitBtnTapped(_ sender: UIBarButtonItem) {
         
     }
     
     @IBAction func showTranscriptsBtnTapped(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "TranscriptsArchiveViewController") as? TranscriptsArchiveViewController {
+
+            vc.managedContext = self.managedContext
+            vc.fetchRequest = TranscriptsAtTheTime.fetchRequest()
+            self.present(vc, animated: true, completion: nil)
+            
+        }
+    }
+    
+    @IBAction func saveBtnTapped(_ sender: UIButton) {
+        
         
     }
     

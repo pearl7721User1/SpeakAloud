@@ -11,9 +11,7 @@ import CoreData
 
 class TranscriptsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var managedContext: NSManagedObjectContext?
-    var fetchRequest: NSFetchRequest<Transcript>?
-    var fetchResults: [Transcript] = [Transcript]()
+    var transcripts: [Transcript]?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,16 +28,17 @@ class TranscriptsViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchResults.count
+        return transcripts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranscriptCell", for: indexPath)
         
-        if let titleLabel = cell.viewWithTag(10) as? UILabel {
+        if let transcripts = transcripts,
+            let titleLabel = cell.viewWithTag(10) as? UILabel {
             
-            titleLabel.text = fetchResults[indexPath.row].text
+            titleLabel.text = transcripts[indexPath.row].text
         }
         
         return cell

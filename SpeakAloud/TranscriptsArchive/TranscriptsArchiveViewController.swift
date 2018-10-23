@@ -50,6 +50,16 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "TranscriptsViewController") as? TranscriptsViewController {
+            
+            if let transcripts = fetchResults[indexPath.row].isMadeOf {
+                
+                vc.transcripts = transcripts.array as! [Transcript]
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+        }
         
     }
 }

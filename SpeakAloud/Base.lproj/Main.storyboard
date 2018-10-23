@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7oe-T4-F8G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7oe-T4-F8G">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -184,6 +185,16 @@
                                             <action selector="showTranscriptsBtnTapped:" destination="7oe-T4-F8G" id="j92-Cw-6rn"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" id="SzI-wX-Joa">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qnr-DA-2Sg">
+                                            <rect key="frame" x="265.5" y="7" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="save"/>
+                                            <connections>
+                                                <action selector="saveBtnTapped:" destination="7oe-T4-F8G" eventType="touchUpInside" id="myX-Kv-lZW"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -203,6 +214,7 @@
                     </view>
                     <connections>
                         <outlet property="recorderSignal" destination="XSd-fc-ip6" id="mgR-VG-wnU"/>
+                        <outlet property="saveButton" destination="Qnr-DA-2Sg" id="Z47-bO-QT9"/>
                         <outlet property="textView" destination="yVA-x5-scB" id="bqr-OC-nNK"/>
                     </connections>
                 </viewController>
