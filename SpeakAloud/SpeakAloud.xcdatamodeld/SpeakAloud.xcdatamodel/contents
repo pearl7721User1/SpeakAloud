@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Transcript" representedClassName="Transcript" syncable="YES">
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="contributes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TranscriptsAtTheTime" inverseName="isMadeOf" inverseEntity="TranscriptsAtTheTime" syncable="YES"/>
+    </entity>
+    <entity name="TranscriptsAtTheTime" representedClassName="TranscriptsAtTheTime" syncable="YES">
+        <attribute name="commonWords" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="isMadeOf" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Transcript" inverseName="contributes" inverseEntity="Transcript" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Transcript" positionX="-89.79296875" positionY="-27.66796875" width="128" height="90"/>
+        <element name="TranscriptsAtTheTime" positionX="110.46484375" positionY="15.66796875" width="128" height="135"/>
+    </elements>
 </model>

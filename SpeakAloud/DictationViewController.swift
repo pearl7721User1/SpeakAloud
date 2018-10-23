@@ -209,6 +209,13 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-
+    @IBAction func testCloudKitBtnTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func showTranscriptsBtnTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
 }
 

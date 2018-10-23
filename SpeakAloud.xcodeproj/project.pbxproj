@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE117A33217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A32217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift */; };
+		BE117A38217F16D500C9CB63 /* Transcript+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A34217F16D500C9CB63 /* Transcript+CoreDataClass.swift */; };
+		BE117A39217F16D500C9CB63 /* Transcript+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A35217F16D500C9CB63 /* Transcript+CoreDataProperties.swift */; };
+		BE117A3A217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */; };
+		BE117A3B217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */; };
+		BE117A3D217F16F600C9CB63 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */; };
+		BE87BBAA217D674000D9A908 /* CloudKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */; };
+		BE87BBAE217D6A3000D9A908 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE87BBAD217D6A3000D9A908 /* CloudKit.framework */; };
 		EE2FCF092176411200BF6352 /* DictationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FCF082176411200BF6352 /* DictationViewController.swift */; };
 		EEFE17C521763E1900DBB109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17C421763E1900DBB109 /* AppDelegate.swift */; };
-		EEFE17C721763E1900DBB109 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17C621763E1900DBB109 /* TableViewController.swift */; };
+		EEFE17C721763E1900DBB109 /* TranscriptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17C621763E1900DBB109 /* TranscriptsViewController.swift */; };
 		EEFE17CA21763E1900DBB109 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEFE17C821763E1900DBB109 /* Main.storyboard */; };
 		EEFE17CD21763E1900DBB109 /* SpeakAloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17CB21763E1900DBB109 /* SpeakAloud.xcdatamodeld */; };
 		EEFE17CF21763E1900DBB109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEFE17CE21763E1900DBB109 /* Assets.xcassets */; };
@@ -18,10 +26,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE117A32217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptsArchiveViewController.swift; sourceTree = "<group>"; };
+		BE117A34217F16D500C9CB63 /* Transcript+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transcript+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BE117A35217F16D500C9CB63 /* Transcript+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transcript+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewController.swift; sourceTree = "<group>"; };
+		BE87BBAB217D682000D9A908 /* SpeakAloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakAloud.entitlements; sourceTree = "<group>"; };
+		BE87BBAD217D6A3000D9A908 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		EE2FCF082176411200BF6352 /* DictationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictationViewController.swift; sourceTree = "<group>"; };
 		EEFE17C121763E1900DBB109 /* SpeakAloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakAloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEFE17C421763E1900DBB109 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEFE17C621763E1900DBB109 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		EEFE17C621763E1900DBB109 /* TranscriptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptsViewController.swift; sourceTree = "<group>"; };
 		EEFE17C921763E1900DBB109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEFE17CC21763E1900DBB109 /* SpeakAloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakAloud.xcdatamodel; sourceTree = "<group>"; };
 		EEFE17CE21763E1900DBB109 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,17 +52,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE87BBAE217D6A3000D9A908 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE117A31217F144800C9CB63 /* TranscriptsArchive */ = {
+			isa = PBXGroup;
+			children = (
+				BE117A32217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift */,
+				EEFE17C621763E1900DBB109 /* TranscriptsViewController.swift */,
+			);
+			path = TranscriptsArchive;
+			sourceTree = "<group>";
+		};
+		BE87BBAC217D6A3000D9A908 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE87BBAD217D6A3000D9A908 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EEFE17B821763E1900DBB109 = {
 			isa = PBXGroup;
 			children = (
+				BE117A34217F16D500C9CB63 /* Transcript+CoreDataClass.swift */,
+				BE117A35217F16D500C9CB63 /* Transcript+CoreDataProperties.swift */,
+				BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */,
+				BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */,
 				EEFE17C321763E1900DBB109 /* SpeakAloud */,
 				EEFE17C221763E1900DBB109 /* Products */,
+				BE87BBAC217D6A3000D9A908 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,15 +100,18 @@
 		EEFE17C321763E1900DBB109 /* SpeakAloud */ = {
 			isa = PBXGroup;
 			children = (
+				BE117A31217F144800C9CB63 /* TranscriptsArchive */,
+				BE87BBAB217D682000D9A908 /* SpeakAloud.entitlements */,
 				EEFE17C421763E1900DBB109 /* AppDelegate.swift */,
 				EEFE17DD21763F3E00DBB109 /* GestureDetector.swift */,
 				EE2FCF082176411200BF6352 /* DictationViewController.swift */,
-				EEFE17C621763E1900DBB109 /* TableViewController.swift */,
+				BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */,
 				EEFE17C821763E1900DBB109 /* Main.storyboard */,
 				EEFE17CE21763E1900DBB109 /* Assets.xcassets */,
 				EEFE17D021763E1900DBB109 /* LaunchScreen.storyboard */,
 				EEFE17D321763E1900DBB109 /* Info.plist */,
 				EEFE17CB21763E1900DBB109 /* SpeakAloud.xcdatamodeld */,
+				BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */,
 			);
 			path = SpeakAloud;
 			sourceTree = "<group>";
@@ -106,6 +149,14 @@
 					EEFE17C021763E1900DBB109 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -146,10 +197,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEFE17CD21763E1900DBB109 /* SpeakAloud.xcdatamodeld in Sources */,
+				BE117A33217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift in Sources */,
 				EEFE17DE21763F3E00DBB109 /* GestureDetector.swift in Sources */,
-				EEFE17C721763E1900DBB109 /* TableViewController.swift in Sources */,
+				BE117A3D217F16F600C9CB63 /* CoreDataStack.swift in Sources */,
+				EEFE17C721763E1900DBB109 /* TranscriptsViewController.swift in Sources */,
+				BE87BBAA217D674000D9A908 /* CloudKitViewController.swift in Sources */,
+				BE117A39217F16D500C9CB63 /* Transcript+CoreDataProperties.swift in Sources */,
+				BE117A3B217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift in Sources */,
 				EE2FCF092176411200BF6352 /* DictationViewController.swift in Sources */,
+				BE117A3A217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift in Sources */,
 				EEFE17C521763E1900DBB109 /* AppDelegate.swift in Sources */,
+				BE117A38217F16D500C9CB63 /* Transcript+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpeakAloud/SpeakAloud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LSJUN2G6D;
 				INFOPLIST_FILE = SpeakAloud/Info.plist;
@@ -301,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpeakAloud/SpeakAloud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LSJUN2G6D;
 				INFOPLIST_FILE = SpeakAloud/Info.plist;
