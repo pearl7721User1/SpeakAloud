@@ -27,6 +27,13 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet var recorderSignal : UIView!
     @IBOutlet weak var saveButton: UIButton!
     
+    var transcripts: [Transcript] = [Transcript]() {
+        didSet {
+            self.saveButton.isEnabled = transcripts.count > 0 ? true : false
+        }
+    }
+    
+    
     private var managedContext: NSManagedObjectContext!
     
     var shouldStartAutomatically = false
@@ -66,12 +73,8 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
             if speechRecognizer.isAvailable {
                 if audioEngine.isRunning {
                     
-                    print("save")
-                    let isSaved = createTranscript(text: textView.text)
-                    if isSaved == true {
-                        self.saveButton.isEnabled = true
-                    }
-                    
+                    print("add transcript")
+                    addTranscript(text: textView.text)
                     shouldStartAutomatically = false
                 }
             }
@@ -222,17 +225,63 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-    private func createTranscript(text: String) -> Bool {
+    private func addTranscript(text: String) {
         
         let transcript = Transcript(context: self.managedContext)
         transcript.timeStamp = Date() as NSDate
         transcript.text = text
         
-        do {
-            try self.managedContext.save()
-        } catch {
+        transcripts.append(transcript)
+    }
+    
+    private func createTranscriptsAtTheTime() -> Bool {
+        
+        let transcriptsAtTheTime = TranscriptsAtTheTime(context: self.managedContext)
+        transcriptsAtTheTime.count = Int16(transcripts.count)
+        transcriptsAtTheTime.startTime = {
             
-            print("couldn't save the transcript")
+            let earliestTranscript: Transcript = transcripts.reduce(transcripts[0], { (transcript1, transcript2) in
+                
+                if let lValue = transcript1.timeStamp?.timeIntervalSince1970,
+                    let rValue = transcript2.timeStamp?.timeIntervalSince1970 {
+                    
+                    return lValue < rValue ? transcript1 : transcript2
+                    
+                } else {
+                    fatalError("couldn't create timeStamp")
+                }
+            })
+            
+            return earliestTranscript.timeStamp
+        }()
+        
+        transcriptsAtTheTime.endTime = {
+            
+            let mostRecentTranscript: Transcript = transcripts.reduce(transcripts[0], { (transcript1, transcript2) in
+                
+                if let lValue = transcript1.timeStamp?.timeIntervalSince1970,
+                    let rValue = transcript2.timeStamp?.timeIntervalSince1970 {
+                    
+                    return lValue > rValue ? transcript1 : transcript2
+                    
+                } else {
+                    fatalError("couldn't create timeStamp")
+                }
+            })
+            
+            return mostRecentTranscript.timeStamp
+        }()
+        
+        transcriptsAtTheTime.isMadeOf = NSOrderedSet(array: transcripts)
+        
+        for (_,v) in transcripts.enumerated() {
+            v.contributes = transcriptsAtTheTime
+        }
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print("couldn't save transcriptsAtTheTime")
             return false
         }
         
@@ -245,8 +294,8 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func showTranscriptsBtnTapped(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "TranscriptsArchiveViewController") as? TranscriptsArchiveViewController {
-
+        if let navigationVC = storyboard.instantiateViewController(withIdentifier: "TranscriptsArchiveNavigationController") as? UINavigationController {
+            
             vc.managedContext = self.managedContext
             vc.fetchRequest = TranscriptsAtTheTime.fetchRequest()
             self.present(vc, animated: true, completion: nil)
@@ -256,7 +305,11 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func saveBtnTapped(_ sender: UIButton) {
         
+        let isCreated = createTranscriptsAtTheTime()
         
+        if (isCreated) {
+            transcripts.removeAll()
+        }
     }
     
 }
