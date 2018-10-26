@@ -15,6 +15,7 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
     var fetchRequest: NSFetchRequest<TranscriptsAtTheTime>?
     var fetchResults: [TranscriptsAtTheTime] = [TranscriptsAtTheTime]()
     
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,12 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
             fetchResults = results
         }
     }
+    
+    @IBAction func closeBtnTapped(_ sender: UIBarButtonItem) {
+        
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchResults.count
@@ -61,5 +68,36 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
             
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            if let managedContext = managedContext {
+                let managedObject = fetchResults[indexPath.row]
+                
+                // delete from the persistent store
+                managedContext.delete(managedObject)
+                
+                do {
+                    try managedContext.save()
+                } catch {
+                    print("couldn't delete transcriptsAtTheTime")
+                    return
+                }
+                
+                // delete from the fetchResults array
+                fetchResults.remove(at: indexPath.row)
+                
+                // delete from the table view
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            
+            
+        }
     }
 }

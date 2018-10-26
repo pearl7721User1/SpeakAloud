@@ -294,11 +294,11 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func showTranscriptsBtnTapped(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let navigationVC = storyboard.instantiateViewController(withIdentifier: "TranscriptsArchiveNavigationController") as? UINavigationController {
+        if let navigationVC = storyboard.instantiateViewController(withIdentifier: "TranscriptsArchiveNavigationController") as? TranscriptsArchiveNavigationController {
             
-            vc.managedContext = self.managedContext
-            vc.fetchRequest = TranscriptsAtTheTime.fetchRequest()
-            self.present(vc, animated: true, completion: nil)
+            navigationVC.transcriptsArchiveViewController.managedContext = self.managedContext
+            navigationVC.transcriptsArchiveViewController.fetchRequest = TranscriptsAtTheTime.fetchRequest()
+            self.present(navigationVC, animated: true, completion: nil)
             
         }
     }

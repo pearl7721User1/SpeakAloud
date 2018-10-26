@@ -13,6 +13,7 @@
 		BE117A3A217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */; };
 		BE117A3B217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */; };
 		BE117A3D217F16F600C9CB63 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */; };
+		BE532DD62182A81E00F17494 /* TranscriptsArchiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE532DD52182A81E00F17494 /* TranscriptsArchiveNavigationController.swift */; };
 		BE87BBAA217D674000D9A908 /* CloudKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */; };
 		BE87BBAE217D6A3000D9A908 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE87BBAD217D6A3000D9A908 /* CloudKit.framework */; };
 		EE2FCF092176411200BF6352 /* DictationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FCF082176411200BF6352 /* DictationViewController.swift */; };
@@ -32,6 +33,7 @@
 		BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		BE532DD52182A81E00F17494 /* TranscriptsArchiveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptsArchiveNavigationController.swift; sourceTree = "<group>"; };
 		BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewController.swift; sourceTree = "<group>"; };
 		BE87BBAB217D682000D9A908 /* SpeakAloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakAloud.entitlements; sourceTree = "<group>"; };
 		BE87BBAD217D6A3000D9A908 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -62,6 +64,7 @@
 		BE117A31217F144800C9CB63 /* TranscriptsArchive */ = {
 			isa = PBXGroup;
 			children = (
+				BE532DD52182A81E00F17494 /* TranscriptsArchiveNavigationController.swift */,
 				BE117A32217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift */,
 				EEFE17C621763E1900DBB109 /* TranscriptsViewController.swift */,
 			);
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEFE17CD21763E1900DBB109 /* SpeakAloud.xcdatamodeld in Sources */,
+				BE532DD62182A81E00F17494 /* TranscriptsArchiveNavigationController.swift in Sources */,
 				BE117A33217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift in Sources */,
 				EEFE17DE21763F3E00DBB109 /* GestureDetector.swift in Sources */,
 				BE117A3D217F16F600C9CB63 /* CoreDataStack.swift in Sources */,
