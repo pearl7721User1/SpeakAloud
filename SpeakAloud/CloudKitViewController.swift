@@ -14,17 +14,47 @@ class CloudKitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        CKContainer.default().fetchUserRecordID { (recordID, error) in
-            if let error = error {
-                print(error)
-            } else if let recordID = recordID {
-                print(recordID)
-            }
+        // Fetch Public Database
+        let publicDatabase = CKContainer.default().publicCloudDatabase
+        
+        // Initialize Query
+        let query = CKQuery(recordType: "MemorizingMaterial", predicate: NSPredicate(value: true))
+        
+        // Configure Query
+//        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        // Perform Query
+        publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            records?.forEach({ (record) in
+                
+                guard error == nil else{
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                
+                print(record.value(forKey: "name") ?? "")
+                /*
+                self.lists.append(record)
+                DispatchQueue.main.sync {
+                    self.tableView.reloadData()
+                    self.messageLabel.text = ""
+                    updateView()
+                }
+ */
+            })
+            
         }
+        
+        
     }
     
-
+    
+    @IBAction func closeBtnTapped(_ sender: UIBarButtonItem) {
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
     /*
     // MARK: - Navigation
 

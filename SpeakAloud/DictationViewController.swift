@@ -179,6 +179,15 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
+        
+        
+        // connect input node to effect node
+        audioEngine.connect(<#T##node1: AVAudioNode##AVAudioNode#>, to: <#T##AVAudioNode#>, format: <#T##AVAudioFormat?#>)
+        
+        //
+        
+        audioEngine.outputNode
+        
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
             self.recognitionRequest?.append(buffer)
         }
@@ -290,6 +299,12 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func testCloudKitBtnTapped(_ sender: UIBarButtonItem) {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let navigationVC = storyboard.instantiateViewController(withIdentifier: "CloudKitNavigationController") as? UINavigationController {
+            
+            self.present(navigationVC, animated: true, completion: nil)
+            
+        }
     }
     
     @IBAction func showTranscriptsBtnTapped(_ sender: UIBarButtonItem) {
