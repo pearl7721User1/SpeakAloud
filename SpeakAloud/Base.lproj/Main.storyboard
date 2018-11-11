@@ -180,13 +180,6 @@
                                     <outletCollection property="gestureRecognizers" destination="007-Er-2UR" appends="YES" id="a33-0o-0on"/>
                                 </connections>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yVA-x5-scB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="497"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hy-lo-auO">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -212,22 +205,45 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BGC-Fu-bxc">
+                                <rect key="frame" x="97.5" y="14" width="180" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="LKc-Sz-Bbf"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="English"/>
+                                    <segment title="Korean"/>
+                                </segments>
+                                <connections>
+                                    <action selector="languageSegmentValueChanged:" destination="7oe-T4-F8G" eventType="valueChanged" id="fTm-xz-7hW"/>
+                                </connections>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVA-x5-scB">
+                                <rect key="frame" x="0.0" y="52" width="375" height="445"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yVA-x5-scB" firstAttribute="top" secondItem="Y49-cW-v0s" secondAttribute="top" id="17n-Ez-kow"/>
                             <constraint firstItem="XSd-fc-ip6" firstAttribute="top" secondItem="yVA-x5-scB" secondAttribute="bottom" constant="10" id="4Ro-No-9Ac"/>
+                            <constraint firstItem="yVA-x5-scB" firstAttribute="top" secondItem="BGC-Fu-bxc" secondAttribute="bottom" constant="10" id="65q-9H-Lgd"/>
                             <constraint firstItem="6hy-lo-auO" firstAttribute="leading" secondItem="dlO-wU-VMN" secondAttribute="leading" id="C2h-Ef-wkE"/>
                             <constraint firstItem="6hy-lo-auO" firstAttribute="trailing" secondItem="dlO-wU-VMN" secondAttribute="trailing" id="Rei-uV-SX8"/>
                             <constraint firstItem="dlO-wU-VMN" firstAttribute="bottom" secondItem="XSd-fc-ip6" secondAttribute="bottom" constant="60" id="SAl-eX-pyT"/>
                             <constraint firstItem="6hy-lo-auO" firstAttribute="bottom" secondItem="dlO-wU-VMN" secondAttribute="bottom" id="X7P-Ru-vzc"/>
                             <constraint firstItem="dlO-wU-VMN" firstAttribute="trailing" secondItem="yVA-x5-scB" secondAttribute="trailing" id="ZqR-Ag-NGy"/>
+                            <constraint firstItem="dlO-wU-VMN" firstAttribute="top" secondItem="BGC-Fu-bxc" secondAttribute="top" constant="6" id="cHf-wJ-apX"/>
                             <constraint firstItem="XSd-fc-ip6" firstAttribute="centerX" secondItem="Y49-cW-v0s" secondAttribute="centerX" id="gSG-3I-SIY"/>
                             <constraint firstItem="yVA-x5-scB" firstAttribute="leading" secondItem="dlO-wU-VMN" secondAttribute="leading" id="he9-X4-5mE"/>
+                            <constraint firstItem="BGC-Fu-bxc" firstAttribute="centerX" secondItem="Y49-cW-v0s" secondAttribute="centerX" id="sKl-Qh-INq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dlO-wU-VMN"/>
                     </view>
                     <connections>
+                        <outlet property="languageSegmentControl" destination="BGC-Fu-bxc" id="qcx-GN-w2c"/>
                         <outlet property="recorderSignal" destination="XSd-fc-ip6" id="mgR-VG-wnU"/>
                         <outlet property="saveButton" destination="Qnr-DA-2Sg" id="Z47-bO-QT9"/>
                         <outlet property="textView" destination="yVA-x5-scB" id="bqr-OC-nNK"/>
@@ -240,7 +256,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1314" y="33"/>
+            <point key="canvasLocation" x="1312.8" y="32.833583208395808"/>
         </scene>
         <!--Cloud Kit View Controller-->
         <scene sceneID="6uk-Gx-Xxp">

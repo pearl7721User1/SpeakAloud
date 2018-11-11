@@ -66,6 +66,14 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var transcriptSaveDelegate: TranscriptSaveDelegate?
     
+    @IBOutlet weak var languageSegmentControl: UISegmentedControl!
+    @IBAction func languageSegmentValueChanged(_ sender: UISegmentedControl) {
+        
+        
+        
+    }
+    
+    
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
         
         if recorderAvailability != -1 {
@@ -181,14 +189,7 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         
         
-        // connect input node to effect node
-        audioEngine.connect(<#T##node1: AVAudioNode##AVAudioNode#>, to: <#T##AVAudioNode#>, format: <#T##AVAudioFormat?#>)
-        
-        //
-        
-        audioEngine.outputNode
-        
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+        inputNode.installTap(onBus: 0, bufferSize: 1024*5, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
             self.recognitionRequest?.append(buffer)
         }
         
