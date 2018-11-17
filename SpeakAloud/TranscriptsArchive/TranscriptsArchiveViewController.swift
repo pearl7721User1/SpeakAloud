@@ -15,7 +15,6 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
     var fetchRequest: NSFetchRequest<TranscriptsAtTheTime>?
     var fetchResults: [TranscriptsAtTheTime] = [TranscriptsAtTheTime]()
     
-    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +22,12 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
         // Do any additional setup after loading the view.
         if let managedContext = managedContext, let fetchRequest = fetchRequest,
             let results = try? managedContext.fetch(fetchRequest) {
-
+            
             fetchResults = results
         }
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
     }
     
     @IBAction func closeBtnTapped(_ sender: UIBarButtonItem) {
@@ -34,27 +36,54 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
     }
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    // MARK: - table view
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
         return fetchResults.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if let transcripts = fetchResults[section].isMadeOf {
+            return transcripts.count
+        } else {
+            return 0
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranscriptsArchiveCell", for: indexPath)
         
         if let titleLabel = cell.viewWithTag(10) as? UILabel {
             
-            
-//            titleLabel.text = fetchResults[indexPath.row].endTime
-        }
-        
-        if let countLabel = cell.viewWithTag(11) as? UILabel {
-            
-            countLabel.text = "\(fetchResults[indexPath.row].count)"
+            if let transcripts = fetchResults[indexPath.section].isMadeOf {
+                
+                let transcriptsArray = transcripts.array as! [Transcript]
+                titleLabel.text = transcriptsArray[indexPath.row].text
+            }
         }
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let startDate = fetchResults[section].startTime {
+            
+            let f = DateFormatter()
+            f.dateStyle = .medium
+            f.timeStyle = .medium
+            
+            return f.string(from: startDate as Date)
+        } else {
+            return nil
+        }
+    }
+    
+    
+    /*
+    //////
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -69,19 +98,24 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
         }
         
     }
+    */
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }
     
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            if let managedContext = managedContext {
-                let managedObject = fetchResults[indexPath.row]
-                
-                // delete from the persistent store
-                managedContext.delete(managedObject)
+            if let managedContext = managedContext,
+                let transcripts = fetchResults[indexPath.section].isMadeOf {
+                    
+                    let transcriptsArray = transcripts.array as! [Transcript]
+                    
+                    // delete from the persistent store
+                    let transcript = transcriptsArray[indexPath.row]
+                    managedContext.delete(transcript)
                 
                 do {
                     try managedContext.save()
@@ -91,13 +125,14 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
                 }
                 
                 // delete from the fetchResults array
-                fetchResults.remove(at: indexPath.row)
+                //fetchResults[indexPath.section].isMadeOf!.inde
+                
+//                fetchResults.remove(at: indexPath.row)
                 
                 // delete from the table view
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
-            
-            
         }
     }
+ 
 }
