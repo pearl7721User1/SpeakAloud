@@ -206,7 +206,7 @@
                                 </items>
                             </toolbar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BGC-Fu-bxc">
-                                <rect key="frame" x="97.5" y="14" width="180" height="29"/>
+                                <rect key="frame" x="97.5" y="25" width="180" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="LKc-Sz-Bbf"/>
                                 </constraints>
@@ -219,7 +219,7 @@
                                 </connections>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVA-x5-scB">
-                                <rect key="frame" x="0.0" y="52" width="375" height="445"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="434"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -235,7 +235,7 @@
                             <constraint firstItem="dlO-wU-VMN" firstAttribute="bottom" secondItem="XSd-fc-ip6" secondAttribute="bottom" constant="60" id="SAl-eX-pyT"/>
                             <constraint firstItem="6hy-lo-auO" firstAttribute="bottom" secondItem="dlO-wU-VMN" secondAttribute="bottom" id="X7P-Ru-vzc"/>
                             <constraint firstItem="dlO-wU-VMN" firstAttribute="trailing" secondItem="yVA-x5-scB" secondAttribute="trailing" id="ZqR-Ag-NGy"/>
-                            <constraint firstItem="dlO-wU-VMN" firstAttribute="top" secondItem="BGC-Fu-bxc" secondAttribute="top" constant="6" id="cHf-wJ-apX"/>
+                            <constraint firstItem="dlO-wU-VMN" firstAttribute="top" secondItem="BGC-Fu-bxc" secondAttribute="top" constant="-5" id="cHf-wJ-apX"/>
                             <constraint firstItem="XSd-fc-ip6" firstAttribute="centerX" secondItem="Y49-cW-v0s" secondAttribute="centerX" id="gSG-3I-SIY"/>
                             <constraint firstItem="yVA-x5-scB" firstAttribute="leading" secondItem="dlO-wU-VMN" secondAttribute="leading" id="he9-X4-5mE"/>
                             <constraint firstItem="BGC-Fu-bxc" firstAttribute="centerX" secondItem="Y49-cW-v0s" secondAttribute="centerX" id="sKl-Qh-INq"/>

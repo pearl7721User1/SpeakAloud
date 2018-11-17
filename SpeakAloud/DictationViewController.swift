@@ -17,7 +17,10 @@ protocol TranscriptSaveDelegate {
 class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     // MARK: Properties
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
+    private let engSpeechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
+    private let korSpeechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ko-KR"))!
+    private weak var theSpeechRecognizer: SFSpeechRecognizer?
+    
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     
@@ -37,23 +40,23 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     private var managedContext: NSManagedObjectContext!
     
     var shouldStartAutomatically = false
-    private var recorderAvailability = 0 {
+    private var recorderUIStatus = 0 {
         didSet {
             
-            switch recorderAvailability {
+            switch recorderUIStatus {
             case -1:
                 recorderSignal.backgroundColor = notReadyColor
-                textView.text = "(Not ready yet)"
+                textView.text = languageSegmentControl.selectedSegmentIndex == 0 ? "(Not ready yet)" : "아직 준비 안 되었음"
                 
             case 0:
                 recorderSignal.backgroundColor = readyColor
-                textView.text = "(Tap on the button)"
+                textView.text = languageSegmentControl.selectedSegmentIndex == 0 ? "(Tap on the button)" : "버튼을 누르시오"
             case 1:
                 recorderSignal.backgroundColor = onAirColor
-                textView.text = "(Go ahead, I'm listening)"
+                textView.text = languageSegmentControl.selectedSegmentIndex == 0 ? "(Go ahead, I'm listening)" : "어서 말하시오"
             default:
                 recorderSignal.backgroundColor = notReadyColor
-                textView.text = "(Not ready yet)"
+                textView.text = languageSegmentControl.selectedSegmentIndex == 0 ? "(Not ready yet)" : "아직 준비 안 되었음"
             }
         }
     }
@@ -69,39 +72,39 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var languageSegmentControl: UISegmentedControl!
     @IBAction func languageSegmentValueChanged(_ sender: UISegmentedControl) {
         
+        // switch the selected speech recognizer
+        theSpeechRecognizer = sender.selectedSegmentIndex == 0 ? engSpeechRecognizer : korSpeechRecognizer
         
+        // end audio
+        endAudioEngine()
         
+        // reflect ui
+        recorderUIStatus = 0
     }
     
     
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
         
-        if recorderAvailability != -1 {
-            
-            if speechRecognizer.isAvailable {
-                if audioEngine.isRunning {
-                    
-                    print("add transcript")
-                    addTranscript(text: textView.text)
-                    shouldStartAutomatically = false
-                }
-            }
-            
-            recordButtonTapped()
+        guard recorderUIStatus != -1 else {
+            return
         }
         
+        if recorderUIStatus == 1 {
+            addTranscript(text: textView.text)
+            shouldStartAutomatically = false
+        }
+        
+        recordButtonTapped()
     }
     
     @objc func shakeGestureHandler() {
         
-        if speechRecognizer.isAvailable {
-            if audioEngine.isRunning {
-                recordButtonTapped()
-                
-                shouldStartAutomatically = true
-            }
+        if audioEngine.isRunning {
+            recordButtonTapped()
             
+            shouldStartAutomatically = true
         }
+        
     }
     
     // MARK: UIViewController
@@ -114,13 +117,19 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(shakeGestureHandler), name: NSNotification.Name(rawValue: "shaked"), object: nil)
         
         // Disable the record buttons until authorization has been granted.
-        self.recorderAvailability = 0
+        self.recorderUIStatus = 0
         
         saveButton.isEnabled = false
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setDictationStatusToReady), name: NSNotification.Name(rawValue: "SpeechRecognitionTaskCleared"), object: nil)
+        
+        theSpeechRecognizer = languageSegmentControl.selectedSegmentIndex == 0 ? engSpeechRecognizer : korSpeechRecognizer
     }
     
     override public func viewDidAppear(_ animated: Bool) {
-        speechRecognizer.delegate = self
+        engSpeechRecognizer.delegate = self
+        korSpeechRecognizer.delegate = self
         
         SFSpeechRecognizer.requestAuthorization { authStatus in
             /*
@@ -132,14 +141,15 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
                 case .authorized:
                     self.recordButtonTapped()
                 default:
-                    self.recorderAvailability = 0
+                    self.recorderUIStatus = 0
                     
                 }
             }
         }
     }
     
-    private func startRecording() throws {
+    // MARK: - Recording
+    private func startRecording(speechRecognizer: SFSpeechRecognizer) throws {
         
         // Cancel the previous task if it's running.
         if let recognitionTask = recognitionTask {
@@ -155,6 +165,8 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         let inputNode = audioEngine.inputNode
+        
+        
         
 //        guard let inputNode = audioEngine.inputNode else { fatalError("Audio engine has no input node") }
         guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
@@ -179,10 +191,8 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                self.recorderAvailability = 0
-                if self.shouldStartAutomatically {
-                    self.recordButtonTapped()
-                }
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SpeechRecognitionTaskCleared"), object: nil)
+                
             }
         }
         
@@ -197,11 +207,22 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         try audioEngine.start()
         
-        textView.text = "(Go ahead, I'm listening)"
+//        textView.text = "(Go ahead, I'm listening)"
+    }
+    
+    private func endAudioEngine() {
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
+    }
+    
+    @objc func setDictationStatusToReady() {
+        self.recorderUIStatus = 0
+        if self.shouldStartAutomatically {
+            self.recordButtonTapped()
+        }
     }
     
     // MARK: SFSpeechRecognizerDelegate
-    
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         
         print("Delegate called")
@@ -210,31 +231,13 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             print("Available")
             
-            self.recorderAvailability = 0
+            self.recorderUIStatus = 0
         } else {
-            self.recorderAvailability = -1
+            self.recorderUIStatus = -1
         }
     }
     
-    // MARK: Interface Builder actions    
-    private func recordButtonTapped() {
-        if audioEngine.isRunning {
-            
-            print("----------- stop")
-            print("recordButtonTapped")
-            
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            self.recorderAvailability = -1
-        } else {
-            
-            print("----------- willStartRecording")
-            print("recordButtonTapped")
-            try! startRecording()
-            self.recorderAvailability = 1
-        }
-    }
-    
+    // MARK: Core Data functions
     private func addTranscript(text: String) {
         
         let transcript = Transcript(context: self.managedContext)
@@ -297,6 +300,31 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         return true
     }
+    
+    // MARK: Interface Builder actions    
+    private func recordButtonTapped() {
+        if audioEngine.isRunning {
+            
+            print("----------- stop")
+            print("recordButtonTapped")
+            
+            endAudioEngine()
+            self.recorderUIStatus = -1
+        } else {
+            
+            print("----------- willStartRecording")
+            print("recordButtonTapped")
+            
+            if let theSpeechRecognizer = theSpeechRecognizer {
+                try! startRecording(speechRecognizer: theSpeechRecognizer)
+                self.recorderUIStatus = 1
+            } else {
+                fatalError("theSpeechRecognizer is nil at the moment")
+            }
+            
+        }
+    }
+    
     
     @IBAction func testCloudKitBtnTapped(_ sender: UIBarButtonItem) {
         
