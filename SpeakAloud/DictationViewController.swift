@@ -33,6 +33,7 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     var transcripts: [Transcript] = [Transcript]() {
         didSet {
             self.saveButton.isEnabled = transcripts.count > 0 ? true : false
+            
         }
     }
     
@@ -243,6 +244,7 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         let transcript = Transcript(context: self.managedContext)
         transcript.timeStamp = Date() as NSDate
         transcript.text = text
+        transcript.languageCode = theSpeechRecognizer?.locale.identifier ?? ""
         
         transcripts.append(transcript)
     }

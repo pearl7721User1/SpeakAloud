@@ -37,6 +37,7 @@
 		BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewController.swift; sourceTree = "<group>"; };
 		BE87BBAB217D682000D9A908 /* SpeakAloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakAloud.entitlements; sourceTree = "<group>"; };
 		BE87BBAD217D6A3000D9A908 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		EE04F31721A2F4F800C97C59 /* SpeakAloud 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SpeakAloud 2.xcdatamodel"; sourceTree = "<group>"; };
 		EE2FCF082176411200BF6352 /* DictationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictationViewController.swift; sourceTree = "<group>"; };
 		EEFE17C121763E1900DBB109 /* SpeakAloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakAloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEFE17C421763E1900DBB109 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -403,9 +404,10 @@
 		EEFE17CB21763E1900DBB109 /* SpeakAloud.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EE04F31721A2F4F800C97C59 /* SpeakAloud 2.xcdatamodel */,
 				EEFE17CC21763E1900DBB109 /* SpeakAloud.xcdatamodel */,
 			);
-			currentVersion = EEFE17CC21763E1900DBB109 /* SpeakAloud.xcdatamodel */;
+			currentVersion = EE04F31721A2F4F800C97C59 /* SpeakAloud 2.xcdatamodel */;
 			path = SpeakAloud.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

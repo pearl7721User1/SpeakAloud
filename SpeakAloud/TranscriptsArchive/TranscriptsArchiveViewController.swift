@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var managedContext: NSManagedObjectContext?
     var fetchRequest: NSFetchRequest<TranscriptsAtTheTime>?
     var fetchResults: [TranscriptsAtTheTime] = [TranscriptsAtTheTime]()
+    let synthesizer = AVSpeechSynthesizer()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -56,12 +58,12 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TranscriptsArchiveCell", for: indexPath)
         
-        if let titleLabel = cell.viewWithTag(10) as? UILabel {
+        if let textView = cell.viewWithTag(10) as? UITextView {
             
             if let transcripts = fetchResults[indexPath.section].isMadeOf {
                 
                 let transcriptsArray = transcripts.array as! [Transcript]
-                titleLabel.text = transcriptsArray[indexPath.row].text
+                textView.text = transcriptsArray[indexPath.row].text
             }
         }
         
@@ -99,7 +101,7 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
         
     }
     */
-    
+    /*
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }
@@ -133,6 +135,88 @@ class TranscriptsArchiveViewController: UIViewController, UITableViewDataSource,
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
+ */
+        
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            self.delete(indexPath: indexPath)
+            success(true)
+        })
+        deleteAction.backgroundColor = .red
+        
+        let editAction = UIContextualAction(style: .normal, title:  "Edit", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            // enable edit
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TranscriptsArchiveCell", for: indexPath)
+            
+            if let textView = cell.viewWithTag(10) as? UITextView {
+                textView.isEditable = true
+                textView.becomeFirstResponder()
+            }
+            
+            success(true)
+        })
+        editAction.backgroundColor = .gray
+        
+        let speakAction = UIContextualAction(style: .normal, title:  "Speak", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            if let transcripts = self.fetchResults[indexPath.section].isMadeOf {
+                
+                let transcriptsArray = transcripts.array as! [Transcript]
+                let transcript = transcriptsArray[indexPath.row]
+                self.speak(transcript: transcript)
+            }
+            
+            success(true)
+        })
+        editAction.backgroundColor = .gray
+        
+        return UISwipeActionsConfiguration(actions: [editAction, deleteAction])
+    }
+    
+    private func delete(indexPath: IndexPath) {
+        
+        if let managedContext = managedContext,
+            let transcripts = fetchResults[indexPath.section].isMadeOf {
+            
+            let transcriptsArray = transcripts.array as! [Transcript]
+            
+            // delete from the persistent store
+            let transcript = transcriptsArray[indexPath.row]
+            managedContext.delete(transcript)
+            
+            do {
+                try managedContext.save()
+            } catch {
+                print("couldn't delete transcriptsAtTheTime")
+                return
+            }
+            
+            // delete from the fetchResults array
+            //fetchResults[indexPath.section].isMadeOf!.inde
+            
+            //                fetchResults.remove(at: indexPath.row)
+            
+            // delete from the table view
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+ 
+    private func speak(transcript: Transcript) {
+        
+        guard let text = transcript.text,
+            let languageCode = transcript.languageCode else {
+                return
+        }
+        
+        let utterance = AVSpeechUtterance(string: text)
+        let voiceToUse = AVSpeechSynthesisVoice(language: languageCode)
+        
+        utterance.voice = voiceToUse
+        synthesizer.speak(utterance)
     }
  
 }

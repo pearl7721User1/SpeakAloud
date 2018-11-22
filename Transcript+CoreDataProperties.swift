@@ -19,6 +19,7 @@ extension Transcript {
 
     @NSManaged public var text: String?
     @NSManaged public var timeStamp: NSDate?
+    @NSManaged public var languageCode: String?
     @NSManaged public var contributes: TranscriptsAtTheTime?
 
 }
