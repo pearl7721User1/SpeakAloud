@@ -2,8 +2,8 @@
 //  Transcript+CoreDataClass.swift
 //  SpeakAloud
 //
-//  Created by GIWON1 on 2018. 10. 23..
-//  Copyright © 2018년 SeoGiwon. All rights reserved.
+//  Created by SeoGiwon on 24/11/2018.
+//  Copyright © 2018 SeoGiwon. All rights reserved.
 //
 //
 

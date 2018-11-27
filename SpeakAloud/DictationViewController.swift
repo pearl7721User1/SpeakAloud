@@ -9,6 +9,7 @@
 import UIKit
 import Speech
 import CoreData
+import AVFoundation
 
 protocol TranscriptSaveDelegate {
     func save(transcript: String)
@@ -159,21 +160,21 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
         let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(AVAudioSessionCategoryRecord)
+        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
         try audioSession.setMode(AVAudioSessionModeMeasurement)
         try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
+        
         let inputNode = audioEngine.inputNode
         
         
-        
-//        guard let inputNode = audioEngine.inputNode else { fatalError("Audio engine has no input node") }
         guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
         
         // Configure request so that results are returned before audio recording is finished
         recognitionRequest.shouldReportPartialResults = true
+        
         
         // A recognition task represents a speech recognition session.
         // We keep a reference to the task so that it can be cancelled.
@@ -208,7 +209,6 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         try audioEngine.start()
         
-//        textView.text = "(Go ahead, I'm listening)"
     }
     
     private func endAudioEngine() {
@@ -305,6 +305,7 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     // MARK: Interface Builder actions    
     private func recordButtonTapped() {
+        
         if audioEngine.isRunning {
             
             print("----------- stop")
@@ -325,6 +326,7 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
             }
             
         }
+ 
     }
     
     
@@ -342,8 +344,16 @@ class DictationViewController: UIViewController, SFSpeechRecognizerDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let navigationVC = storyboard.instantiateViewController(withIdentifier: "TranscriptsArchiveNavigationController") as? TranscriptsArchiveNavigationController {
             
+            //
             navigationVC.transcriptsArchiveViewController.managedContext = self.managedContext
-            navigationVC.transcriptsArchiveViewController.fetchRequest = TranscriptsAtTheTime.fetchRequest()
+            
+            let fetchRequest:NSFetchRequest<TranscriptsAtTheTime> = TranscriptsAtTheTime.fetchRequest()
+            let sortByStartDate = NSSortDescriptor(key: "startTime", ascending: false)
+            fetchRequest.sortDescriptors = [sortByStartDate]
+            
+            navigationVC.transcriptsArchiveViewController.fetchRequest = fetchRequest
+            
+            
             self.present(navigationVC, animated: true, completion: nil)
             
         }

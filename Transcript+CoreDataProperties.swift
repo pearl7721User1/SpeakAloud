@@ -2,8 +2,8 @@
 //  Transcript+CoreDataProperties.swift
 //  SpeakAloud
 //
-//  Created by GIWON1 on 2018. 10. 23..
-//  Copyright © 2018년 SeoGiwon. All rights reserved.
+//  Created by SeoGiwon on 24/11/2018.
+//  Copyright © 2018 SeoGiwon. All rights reserved.
 //
 //
 
@@ -17,9 +17,9 @@ extension Transcript {
         return NSFetchRequest<Transcript>(entityName: "Transcript")
     }
 
+    @NSManaged public var languageCode: String?
     @NSManaged public var text: String?
     @NSManaged public var timeStamp: NSDate?
-    @NSManaged public var languageCode: String?
     @NSManaged public var contributes: TranscriptsAtTheTime?
 
 }

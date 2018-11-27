@@ -8,19 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		BE117A33217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A32217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift */; };
-		BE117A38217F16D500C9CB63 /* Transcript+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A34217F16D500C9CB63 /* Transcript+CoreDataClass.swift */; };
-		BE117A39217F16D500C9CB63 /* Transcript+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A35217F16D500C9CB63 /* Transcript+CoreDataProperties.swift */; };
-		BE117A3A217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */; };
-		BE117A3B217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */; };
 		BE117A3D217F16F600C9CB63 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */; };
 		BE532DD62182A81E00F17494 /* TranscriptsArchiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE532DD52182A81E00F17494 /* TranscriptsArchiveNavigationController.swift */; };
 		BE87BBAA217D674000D9A908 /* CloudKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */; };
 		BE87BBAE217D6A3000D9A908 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE87BBAD217D6A3000D9A908 /* CloudKit.framework */; };
+		EE00817921A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE00817521A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataClass.swift */; };
+		EE00817A21A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE00817621A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataProperties.swift */; };
+		EE00817B21A9777B00DCC7FC /* Transcript+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE00817721A9777B00DCC7FC /* Transcript+CoreDataClass.swift */; };
+		EE00817C21A9777B00DCC7FC /* Transcript+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE00817821A9777B00DCC7FC /* Transcript+CoreDataProperties.swift */; };
 		EE2FCF092176411200BF6352 /* DictationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2FCF082176411200BF6352 /* DictationViewController.swift */; };
+		EE84AC8521A972A50051437D /* SpeakAloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE84AC8321A972A50051437D /* SpeakAloud.xcdatamodeld */; };
 		EEFE17C521763E1900DBB109 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17C421763E1900DBB109 /* AppDelegate.swift */; };
-		EEFE17C721763E1900DBB109 /* TranscriptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17C621763E1900DBB109 /* TranscriptsViewController.swift */; };
 		EEFE17CA21763E1900DBB109 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEFE17C821763E1900DBB109 /* Main.storyboard */; };
-		EEFE17CD21763E1900DBB109 /* SpeakAloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17CB21763E1900DBB109 /* SpeakAloud.xcdatamodeld */; };
 		EEFE17CF21763E1900DBB109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEFE17CE21763E1900DBB109 /* Assets.xcassets */; };
 		EEFE17D221763E1900DBB109 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEFE17D021763E1900DBB109 /* LaunchScreen.storyboard */; };
 		EEFE17DE21763F3E00DBB109 /* GestureDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE17DD21763F3E00DBB109 /* GestureDetector.swift */; };
@@ -28,22 +27,21 @@
 
 /* Begin PBXFileReference section */
 		BE117A32217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptsArchiveViewController.swift; sourceTree = "<group>"; };
-		BE117A34217F16D500C9CB63 /* Transcript+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transcript+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BE117A35217F16D500C9CB63 /* Transcript+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transcript+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BE532DD52182A81E00F17494 /* TranscriptsArchiveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptsArchiveNavigationController.swift; sourceTree = "<group>"; };
 		BE87BBA9217D674000D9A908 /* CloudKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitViewController.swift; sourceTree = "<group>"; };
 		BE87BBAB217D682000D9A908 /* SpeakAloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpeakAloud.entitlements; sourceTree = "<group>"; };
 		BE87BBAD217D6A3000D9A908 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		EE04F31721A2F4F800C97C59 /* SpeakAloud 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SpeakAloud 2.xcdatamodel"; sourceTree = "<group>"; };
+		EE00817521A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EE00817621A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranscriptsAtTheTime+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EE00817721A9777B00DCC7FC /* Transcript+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transcript+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EE00817821A9777B00DCC7FC /* Transcript+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transcript+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EE2FCF082176411200BF6352 /* DictationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictationViewController.swift; sourceTree = "<group>"; };
+		EE84AC8421A972A50051437D /* SpeakAloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakAloud.xcdatamodel; sourceTree = "<group>"; };
+		EE84AC8621A973AA0051437D /* SpeakAloud v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SpeakAloud v2.xcdatamodel"; sourceTree = "<group>"; };
 		EEFE17C121763E1900DBB109 /* SpeakAloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakAloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEFE17C421763E1900DBB109 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEFE17C621763E1900DBB109 /* TranscriptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptsViewController.swift; sourceTree = "<group>"; };
 		EEFE17C921763E1900DBB109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EEFE17CC21763E1900DBB109 /* SpeakAloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpeakAloud.xcdatamodel; sourceTree = "<group>"; };
 		EEFE17CE21763E1900DBB109 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEFE17D121763E1900DBB109 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEFE17D321763E1900DBB109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 			children = (
 				BE532DD52182A81E00F17494 /* TranscriptsArchiveNavigationController.swift */,
 				BE117A32217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift */,
-				EEFE17C621763E1900DBB109 /* TranscriptsViewController.swift */,
 			);
 			path = TranscriptsArchive;
 			sourceTree = "<group>";
@@ -83,10 +80,10 @@
 		EEFE17B821763E1900DBB109 = {
 			isa = PBXGroup;
 			children = (
-				BE117A34217F16D500C9CB63 /* Transcript+CoreDataClass.swift */,
-				BE117A35217F16D500C9CB63 /* Transcript+CoreDataProperties.swift */,
-				BE117A36217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift */,
-				BE117A37217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift */,
+				EE00817521A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataClass.swift */,
+				EE00817621A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataProperties.swift */,
+				EE00817721A9777B00DCC7FC /* Transcript+CoreDataClass.swift */,
+				EE00817821A9777B00DCC7FC /* Transcript+CoreDataProperties.swift */,
 				EEFE17C321763E1900DBB109 /* SpeakAloud */,
 				EEFE17C221763E1900DBB109 /* Products */,
 				BE87BBAC217D6A3000D9A908 /* Frameworks */,
@@ -114,8 +111,8 @@
 				EEFE17CE21763E1900DBB109 /* Assets.xcassets */,
 				EEFE17D021763E1900DBB109 /* LaunchScreen.storyboard */,
 				EEFE17D321763E1900DBB109 /* Info.plist */,
-				EEFE17CB21763E1900DBB109 /* SpeakAloud.xcdatamodeld */,
 				BE117A3C217F16F600C9CB63 /* CoreDataStack.swift */,
+				EE84AC8321A972A50051437D /* SpeakAloud.xcdatamodeld */,
 			);
 			path = SpeakAloud;
 			sourceTree = "<group>";
@@ -200,19 +197,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEFE17CD21763E1900DBB109 /* SpeakAloud.xcdatamodeld in Sources */,
 				BE532DD62182A81E00F17494 /* TranscriptsArchiveNavigationController.swift in Sources */,
 				BE117A33217F14FB00C9CB63 /* TranscriptsArchiveViewController.swift in Sources */,
 				EEFE17DE21763F3E00DBB109 /* GestureDetector.swift in Sources */,
 				BE117A3D217F16F600C9CB63 /* CoreDataStack.swift in Sources */,
-				EEFE17C721763E1900DBB109 /* TranscriptsViewController.swift in Sources */,
+				EE00817B21A9777B00DCC7FC /* Transcript+CoreDataClass.swift in Sources */,
 				BE87BBAA217D674000D9A908 /* CloudKitViewController.swift in Sources */,
-				BE117A39217F16D500C9CB63 /* Transcript+CoreDataProperties.swift in Sources */,
-				BE117A3B217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataProperties.swift in Sources */,
+				EE84AC8521A972A50051437D /* SpeakAloud.xcdatamodeld in Sources */,
+				EE00817921A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataClass.swift in Sources */,
 				EE2FCF092176411200BF6352 /* DictationViewController.swift in Sources */,
-				BE117A3A217F16D500C9CB63 /* TranscriptsAtTheTime+CoreDataClass.swift in Sources */,
 				EEFE17C521763E1900DBB109 /* AppDelegate.swift in Sources */,
-				BE117A38217F16D500C9CB63 /* Transcript+CoreDataClass.swift in Sources */,
+				EE00817A21A9777B00DCC7FC /* TranscriptsAtTheTime+CoreDataProperties.swift in Sources */,
+				EE00817C21A9777B00DCC7FC /* Transcript+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,15 +397,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EEFE17CB21763E1900DBB109 /* SpeakAloud.xcdatamodeld */ = {
+		EE84AC8321A972A50051437D /* SpeakAloud.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EE04F31721A2F4F800C97C59 /* SpeakAloud 2.xcdatamodel */,
-				EEFE17CC21763E1900DBB109 /* SpeakAloud.xcdatamodel */,
+				EE84AC8621A973AA0051437D /* SpeakAloud v2.xcdatamodel */,
+				EE84AC8421A972A50051437D /* SpeakAloud.xcdatamodel */,
 			);
-			currentVersion = EE04F31721A2F4F800C97C59 /* SpeakAloud 2.xcdatamodel */;
+			currentVersion = EE84AC8621A973AA0051437D /* SpeakAloud v2.xcdatamodel */;
 			path = SpeakAloud.xcdatamodeld;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
